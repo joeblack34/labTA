@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Лабораторная  работа №4.Составление программ на рекуррентные зависимости.</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<p></p>
+		<p class="text-uppercase"><b>Лабораторная  работа №4.Составление программ на рекуррентные зависимости.</b></p>
+		
+		<p><b>Цель работы:</b> Составление программ на рекуррентные зависимости.</p>
+		<p><b>Теоретическая часть</b></p>
+		<p><b>Прием накопления суммы</b></p>
+		<p>Данный алгоритмический прием используется, когда надо просуммировать большое количество чисел. Для этого переменной, в которую будет записываться сумма, в начале присваивается нулевое значение, затем делается цикл, где на каждом шаге к этой переменной добавляется очередное число. (См.Исходный код программы накопления суммы)</p>
+		
+		<p><b>Прием накопления суммы</b></p>
+		<p>Аналогично накоплению суммы можно в отдельной переменной накапливать произведение. Переменной, в которой производится накопление, присваивается начальное значение 1. (См.Исходный код программы вычисление факториала.)</p>
+
+
+		<p><b>Рекуррентные соотношения: основные понятия</b></p>
+		<p>В основе рассмотренных ранее алгоритмических приемов накопления суммы и произведения лежит фундаментальная идея о том, что результат вычислений на каждом шаге цикла должен зависеть от результата вычислений на предыдущем шаге. Обобщенным математическим выражением этой идеи являются рекуррентные соотношения.</p>
+				
+		<p><b>Рекурсия</b></p>
+		<p>Рекурсия - вызов функции из самой функции. (См.Исходный код программы вычисление факториала с помощью рекурсии.)</p>
+
+		<br>
+				
+		<p><b>Практическая часть</b></p>
+		<p>Исходный код программы накопления суммы:</p>
+		<pre>
+			#include &ltstdio.h&gt
+
+			int main(){
+			    //альтернативное объявление переменных
+			    //int s,i;
+			    //s = 0;
+			    int s = 0;
+			    int i;
+			    
+			    for (i=0; i&lt100; i++) {
+			        s=s+i;
+			        printf("s=%d\n", s);
+			    }
+			    
+			    getchar();
+			    return 0;
+			}
+		</pre>
+
+		<p>Исходный код программы вычисление факториала:</p>
+		<pre>
+			#include &ltstdio.h&gt
+
+			int main(){
+			  int i,p,n;
+			    p = 1;
+			    printf("Введите n:");
+			    scanf("%d", &n);
+			    
+			    
+			    for (i=2; i&lt;n; i++) {
+			        p=p*i;
+			        printf("p=%d\n", p);
+			    }
+			    
+			    getchar();
+			    return 0;
+			}
+		</pre>
+		
+		<p>Исходный код программы вычисление факториала с помощью рекурсии</p>
+		<pre>
+			#include &ltstdio.h&gt
+
+			int fact(int num)  // вычисление факториала числа num
+			{
+			  if (num <= 1)   return 1;  // если число не больше 1, возвращаем 1
+			  else return num*fact(num - 1);  // рекурсивный вызов для числа на 1 меньше
+			}
+			
+			int main() 
+			{
+			  int a, r;
+			  printf("a= ");
+			  scanf("%d", &a);
+			  r = fact(a);    // вызов функции: num=a
+			  printf("%d! = %d", a, r);
+			  getchar();
+			  return 0;
+			}
+		</pre>
+
+		<p><b>Примеры программ на анализ чисел</b></p>
+		<p>Исходный код программы вывода чисел в обратном порядке</p>
+		<pre>
+			#include &ltstdio.h&gt
+			
+			int main(){
+				int n, reverse;
+				reverse = 0;
+			
+				printf("Enter a number to reverse\n");
+				scanf("%d", &n);
+			
+				while(n!=0){
+					reverse = reverse*10;
+					reverse = reverse+n%10;
+					n = n/10;
+				}
+			
+				printf("Reverse of entered number is = %d\n", reverse);
+				getchar();
+				return 0;
+			}
+		</pre>
+		
+		<p>Исходный код программы на проверку числа Palindrome</p>
+		<pre>
+			#include &ltstdio.h&gt
+
+			int main(){
+				int n, reverse, temp;
+				reverse = 0;
+			
+				printf("Enter a number to check if it is a palindrome or not\n");
+				scanf("%d", &n);
+			
+				temp = n;
+			
+				while(temp != 0){
+					reverse = reverse*10;
+					reverse = reverse+temp%10;
+					temp = temp/10;
+				}
+			
+				if(n == reverse){
+					printf("%d is a palindrome number.\n", n);
+				} else {
+					printf("%d is not a palindrome number.\n", n);
+				}
+				return 0;
+			}
+		</pre>
+		
+		
+		
+		
+	<script>
+
+	    document.ondragstart = noselect;
+
+	    document.onselectstart = noselect;
+
+	    document.oncontextmenu = noselect;
+
+	    function noselect() {return false;}
+
+	</script>
+</body>
+</html>
